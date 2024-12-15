@@ -1,9 +1,15 @@
+import styles from "./Tab.module.css";
+
 function Tab() {
   return (
-    <div>
-      <button>Deck</button>
-      <button>Mew</button>
-    </div>
+    <ul className={styles.tab}>
+      <li>
+        <button>Deck</button>
+      </li>
+      <li>
+        <button>Mew</button>
+      </li>
+    </ul>
   );
 }
 

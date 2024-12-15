@@ -1,17 +1,12 @@
 import Card from "./Card";
+import styles from "./Binder.module.css";
 
 function Binder({ cards, handleAcquireCard }) {
   return (
-    <div>
-      <ul>
-        {cards.map((card) => (
-          <Card
-            card={card}
-            key={card.id}
-            handleAcquireCard={handleAcquireCard}
-          />
-        ))}
-      </ul>
+    <div className={styles.container}>
+      {cards.map((card) => (
+        <Card card={card} key={card.id} handleAcquireCard={handleAcquireCard} />
+      ))}
     </div>
   );
 }

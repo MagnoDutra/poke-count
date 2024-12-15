@@ -1,0 +1,11 @@
+.card {
+  cursor: pointer;
+}
+
+.card img {
+  width: 100%;
+}
+
+.notAcquired {
+  filter: grayscale(100%);
+}

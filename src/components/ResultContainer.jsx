@@ -1,48 +1,6 @@
 import ResultPack from "./ResultPack";
 import styles from "./ResultContainer.module.css";
-
-// function calcChance(cards) {
-//   let probabilityOfNotGettingNewCard = 1;
-
-//   const noCardsAcquired = cards.every((card) => !card.acquired);
-
-//   if (noCardsAcquired) {
-//     return 100;
-//   }
-
-//   const missingCards = cards.filter((card) => !card.acquired);
-
-//   for (const card of missingCards) {
-//     const notChance1To3 = (1 - card.percent1To3) ** 3;
-//     const notChance4 = 1 - card.percent4;
-//     const notChance5 = 1 - card.percent5;
-
-//     const notChanceToGet = notChance1To3 * notChance4 * notChance5;
-
-//     probabilityOfNotGettingNewCard *= notChanceToGet;
-//   }
-
-//   const chanceOfGettingNewCard = 1 - probabilityOfNotGettingNewCard;
-
-//   return (chanceOfGettingNewCard * 100).toFixed(2);
-// }
-
-// function calcChance(cards) {
-//   const totalCards = cards.length;
-
-//   const missingCards = cards.filter((card) => !card.acquired).length;
-
-//   const probabilityNewCard = missingCards / totalCards;
-
-//   const probabilityNotNewCard = 1 - probabilityNewCard;
-
-//   const probabilityNotNewCardInThree = probabilityNotNewCard ** 3;
-
-//   const probabilityAtLeastOneNew = 1 - probabilityNotNewCardInThree;
-
-//   console.log(probabilityAtLeastOneNew);
-//   return (probabilityAtLeastOneNew * 100).toFixed(3);
-// }
+import { useCards } from "../contexts/CardsContext";
 
 function calcChance(cards) {
   const { totalNotChance1To3, totalNotChance4, totalNotChance5 } = cards.reduce(
@@ -65,14 +23,12 @@ function calcChance(cards) {
   return (newCardProbability * 100).toFixed(2);
 }
 
-function ResultContainer({ cards }) {
+function ResultContainer() {
+  const { cards } = useCards();
+
   const mewtwoPack = cards.filter((card) => card.pack.includes("mewtwo"));
-  const pikachuPack = cards.filter(
-    (card) => card.pack === "pikachu" && !card.acquired
-  );
-  const charizardPack = cards.filter(
-    (card) => card.pack === "charizard" && !card.acquired
-  );
+  const pikachuPack = cards.filter((card) => card.pack.includes("pikachu"));
+  const charizardPack = cards.filter((card) => card.pack.includes("charizard"));
 
   const mewtwoChance = calcChance(mewtwoPack);
   const pikachuChance = calcChance(pikachuPack);

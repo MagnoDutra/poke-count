@@ -5,7 +5,7 @@ import Tab from "../components/Tab";
 import { useCards } from "../contexts/CardsContext";
 
 function Homepage() {
-  const { toggleCards } = useCards();
+  const { handleToggle } = useCards();
 
   return (
     <main>
@@ -13,7 +13,7 @@ function Homepage() {
         <Tab />
       </Header>
       <ResultContainer />
-      <button onClick={toggleCards}>Toggle</button>
+      <button onClick={handleToggle}>Toggle</button>
       <Binder />
     </main>
   );

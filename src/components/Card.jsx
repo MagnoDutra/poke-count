@@ -7,12 +7,9 @@ function Card({ card }) {
   return (
     <div onClick={() => handleAcquireCard(card.id)} className={styles.card}>
       <img
-        src="card_bulbasaur_01.png"
+        src={`cards/card_${card.cardName}_01.png`}
         className={card.acquired ? "" : styles.notAcquired}
       />
-      <p>
-        {card.cardName} {card.acquired ? "✅" : "❌"}
-      </p>
     </div>
   );
 }

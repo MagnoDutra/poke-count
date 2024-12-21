@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 
-import { allCards } from "./data/allCards";
+import { allCards } from "../data/allCards";
 
 const CardsContext = createContext();
 
